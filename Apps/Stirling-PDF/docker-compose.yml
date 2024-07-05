@@ -1,0 +1,27 @@
+name: stirling-pdf
+services:
+  stirling-pdf:
+    environment:
+      - DOCKER_ENABLE_SECURITY=false
+      - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
+      - LANGS=en_GB
+    image: frooodle/s-pdf:latest
+    labels:
+      icon: https://avatars.githubusercontent.com/u/139791695?s=200&v=4
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+    volumes:
+      - /DATA/AppData/stirlingpdf-tools/configs:/configs
+x-casaos:
+  author: froodle
+  main: Stirling-PDF
+  category: Documents
+  icon: https://avatars.githubusercontent.com/u/139791695?s=200&v=4
+  port_map: 8080
+  description:
+    en_us: Stirling PDF is a robust, locally hosted, web-based PDF manipulation platform powered by Docker. Our application offers an extensive range of functionalities, from simple operations like merging and splitting PDFs, to advanced features such as compressing, OCR and Conversions.
+  tagline:
+    en_us: Your locally hosted one-stop-shop for all your PDF needs.
+  title:
+    en_us: Stirling PDF
