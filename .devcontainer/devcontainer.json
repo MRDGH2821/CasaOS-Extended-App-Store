@@ -1,0 +1,28 @@
+{
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "davidanson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "michaelcurrin.auto-commit-msg",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "trunk.io",
+      ]
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers-contrib/features/npm-package:1": {
+      "package": "mega-linter-runner"
+    },
+    "ghcr.io/devcontainers-contrib/features/yamllint:2": {},
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "enableNonRootDocker": "true",
+      "moby": "true",
+      "version": "latest"
+    },
+    "ghcr.io/trunk-io/devcontainer-feature/trunk": {}
+  },
+  "image": "mcr.microsoft.com/devcontainers/base:bullseye",
+  "name": "CasaOS Extended App Store"
+}
