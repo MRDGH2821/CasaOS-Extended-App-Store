@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "davidanson.vscode-markdownlint",
+    "esbenp.prettier-vscode",
+    "foxundermoon.shell-format",
+    "michaelcurrin.auto-commit-msg",
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-yaml",
+    "trunk.io"
+  ]
+}

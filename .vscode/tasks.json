@@ -1,0 +1,11 @@
+{
+  "tasks": [
+    {
+      "args": ["mega-linter-runner", "--flavor", "terraform"],
+      "command": "npx",
+      "label": "Mega Lint",
+      "type": "shell"
+    }
+  ],
+  "version": "2.0.0"
+}
