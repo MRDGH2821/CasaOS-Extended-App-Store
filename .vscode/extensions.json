@@ -6,7 +6,9 @@
     "foxundermoon.shell-format",
     "michaelcurrin.auto-commit-msg",
     "ms-azuretools.vscode-docker",
+    "pascalreitermann93.vscode-yaml-sort",
     "redhat.vscode-yaml",
+    "spmeesseman.vscode-taskexplorer",
     "trunk.io"
   ]
 }
