@@ -31,24 +31,6 @@ services:
       - source: /DATA/nextcloud-md/data
         target: /var/www/data
         type: bind
-    x-casaos:
-      ports:
-        - container: "80"
-          description:
-            en_us: WebUI HTTP Port
-            zh_cn: WebUI HTTP 端口
-        - container: "443"
-          description:
-            en_us: WebUI HTTPS Port
-            zh_cn: WebUI HTTPS 端口
-      volumes:
-        - container: /var/www/html
-          description:
-            en_us: Nextcloud config directory.
-            zh_cn: Nextcloud 配置目录。
-        - container: /var/www/data
-          description:
-            en_us: Nextcloud data directory.
   nextcloud-go-vod:
     container_name: nextcloud-go-vod
     depends_on:
@@ -112,29 +94,3 @@ services:
       - source: /DATA/AppData/nextcloud-valkey/config
         target: /usr/local/etc/valkey
         type: bind
-x-casaos:
-  architectures:
-    - "386"
-    - amd64
-    - arm
-    - arm64
-    - mips64le
-    - ppc64le
-    - s390x
-  author: MRDGH2821
-  description:
-    en_us: Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust. Extended with PostgreSQL, Valkey, Hardware Transcoder (https://memories.gallery/hw-transcoding/) and MediaC.
-  developer: Nextcloud
-  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/icon.png
-  index: /
-  main: nextcloud-md
-  port_map: "10081"
-  screenshot_link:
-    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png
-    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png
-    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png
-  tagline:
-    en_us: The productivity platform that keeps you in control
-  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg
-  title:
-    en_us: Nextcloud (With Memories & DB)
