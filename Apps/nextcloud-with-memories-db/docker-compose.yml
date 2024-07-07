@@ -2,6 +2,9 @@ name: nextcloud
 services:
   nextcloud:
     container_name: nextcloud
+    depends_on:
+      - nextcloud-postgresql
+      - nextcloud-valkey
     devices:
       - /dev/dri:/dev/dri
     environment:
@@ -16,6 +19,8 @@ services:
       - REDIS_HOST_PORT=6379
       - TZ=$TZ
     image: nextcloud:29.0.0
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/icon.png
     ports:
       - protocol: tcp
         published: 10081
