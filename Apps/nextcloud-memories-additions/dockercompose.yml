@@ -1,0 +1,16 @@
+services:
+  go-vod:
+    depends_on:
+      - server
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - NEXTCLOUD_HOST=https://nextcloud
+      - NEXTCLOUD_ALLOW_INSECURE=1 # (self-signed certs or no HTTPS)
+      - NVIDIA_VISIBLE_DEVICES=all
+    image: radialapps/go-vod
+    init: true
+    restart: always
+    volumes:
+      - /var/www/html:/var/www/html:ro
+    # runtime: nvidia # (NVENC)
