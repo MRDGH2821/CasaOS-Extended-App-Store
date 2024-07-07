@@ -122,14 +122,13 @@ x-casaos:
     - ppc64le
     - s390x
   author: MRDGH2821
-  category: Extended Cloud
   description:
     en_us: Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust. Extended with PostgreSQL, Valkey, Hardware Transcoder (https://memories.gallery/hw-transcoding/) and MediaC.
   developer: Nextcloud
   icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/icon.png
   index: /
   main: nextcloud-md
-  port_map: "10080"
+  port_map: "10081"
   screenshot_link:
     - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png
     - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png
