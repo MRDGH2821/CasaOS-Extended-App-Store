@@ -1,0 +1,142 @@
+name: nextcloud
+services:
+  nextcloud:
+    container_name: nextcloud
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - NEXTCLOUD_TRUSTED_DOMAINS=
+      - PGID=$PGID
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_HOST=nextcloud-postgresql
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_USER=nextcloud
+      - PUID=$PUID
+      - REDIS_HOST=nextcloud-valkey
+      - REDIS_HOST_PORT=6379
+      - TZ=$TZ
+    image: nextcloud:29.0.0
+    ports:
+      - protocol: tcp
+        published: 10081
+        target: 80
+      - protocol: tcp
+        published: 10443
+        target: 443
+    restart: unless-stopped
+    volumes:
+      - source: /DATA/AppData/nextcloud-md/var/www/html
+        target: /var/www/html
+        type: bind
+      - source: /DATA/nextcloud-md/data
+        target: /var/www/data
+        type: bind
+    x-casaos:
+      ports:
+        - container: "80"
+          description:
+            en_us: WebUI HTTP Port
+            zh_cn: WebUI HTTP 端口
+        - container: "443"
+          description:
+            en_us: WebUI HTTPS Port
+            zh_cn: WebUI HTTPS 端口
+      volumes:
+        - container: /var/www/html
+          description:
+            en_us: Nextcloud config directory.
+            zh_cn: Nextcloud 配置目录。
+        - container: /var/www/data
+          description:
+            en_us: Nextcloud data directory.
+  nextcloud-go-vod:
+    container_name: nextcloud-go-vod
+    depends_on:
+      - nextcloud
+    devices:
+      - /dev/dri:/dev/dri
+    environment:
+      - NEXTCLOUD_ALLOW_INSECURE=true
+      - NEXTCLOUD_HOST=http://nextcloud
+      - NVIDIA_VISIBLE_DEVICES=all
+    image: radialapps/go-vod:0.2.5
+    init: true
+    restart: always
+    volumes:
+      - read_only: true
+        source: /DATA/AppData/nextcloud-md/var/www/html
+        target: /var/www/html
+        type: bind
+  nextcloud-postgresql:
+    container_name:
+      nextcloud-postgresql
+      # - /dev/vcsm:/dev/vcsm
+      # - /dev/vchiq:/dev/vchiq
+      # - /dev/video10:/dev/video10
+      # - /dev/video11:/dev/video11
+      # - /dev/video12:/dev/video12
+    environment:
+      - POSTGRES_DB=nextcloud
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_USER=nextcloud
+      - TZ=$TZ
+    hostname: nextcloud-postgresql
+    image: postgres:15.3
+    labels:
+      icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/PostgreSQL/icon.png
+    ports:
+      - protocol: tcp
+        published: 5432
+        target: 5432
+    restart: unless-stopped
+    volumes:
+      - source: /DATA/AppData/nextcloud-postgresql/data
+        target: /var/lib/postgresql/data
+        type: bind
+  nextcloud-valkey:
+    container_name: nextcloud-valkey
+    hostname: nextcloud-valkey
+    image: valkey/valkey:7.2.5
+    labels:
+      icon: https://valkey.io/assets/img/Valkey-logo.svg
+    ports:
+      - protocol: tcp
+        published: 6379
+        target: 6379
+    privileged: false
+    restart: unless-stopped
+    volumes:
+      - source: /DATA/AppData/valkey/data
+        target: /data
+        type: bind
+      - source: /DATA/AppData/nextcloud-valkey/config
+        target: /usr/local/etc/valkey
+        type: bind
+x-casaos:
+  architectures:
+    - "386"
+    - amd64
+    - arm
+    - arm64
+    - mips64le
+    - ppc64le
+    - s390x
+  author: MRDGH2821
+  category: Cloud
+  description:
+    en_us: Nextcloud puts your data at your fingertips, under your control. Store your documents, calendar, contacts and photos on a server at home, at one of our providers or in a data center you trust. Extended with PostgreSQL, Valkey, Hardware Transcoder (https://memories.gallery/hw-transcoding/) and MediaC.
+  developer: Nextcloud
+  icon: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/icon.png
+  index: /
+  main: nextcloud-md
+  port_map: "10080"
+  screenshot_link:
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-1.png
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-2.png
+    - https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/screenshot-3.png
+  tagline:
+    en_us: The productivity platform that keeps you in control
+  thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg
+  tips: Install Memories plugin from Nextcloud App Store to enable Memories feature.
+  title:
+    en_us: Nextcloud (With Memories & DB)
