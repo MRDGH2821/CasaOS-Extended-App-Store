@@ -137,6 +137,7 @@ x-casaos:
   tagline:
     en_us: The productivity platform that keeps you in control
   thumbnail: https://cdn.jsdelivr.net/gh/IceWhaleTech/CasaOS-AppStore@main/Apps/Nextcloud/thumbnail.jpg
-  tips: Install Memories plugin from Nextcloud App Store to enable Memories feature.
+  tips:
+    en_us: Install Memories plugin from Nextcloud App Store to enable Memories feature.
   title:
     en_us: Nextcloud (With Memories & DB)
