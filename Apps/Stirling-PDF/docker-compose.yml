@@ -1,6 +1,7 @@
 name: stirling-pdf
 services:
   stirling-pdf:
+    container_name: stirling-pdf
     environment:
       - DOCKER_ENABLE_SECURITY=false
       - INSTALL_BOOK_AND_ADVANCED_HTML_OPS=false
@@ -12,16 +13,37 @@ services:
       - 8080:8080
     restart: unless-stopped
     volumes:
-      - /DATA/AppData/stirlingpdf-tools/configs:/configs
+      - /DATA/AppData/$AppID/configs:/configs
+      - /DATA/AppData/$AppID/trainingData:/usr/share/tessdata
+    x-casaos:
+      envs:
+        - container: LANGS
+          default: en_GB
+          description:
+            en_us: Language
+      ports:
+        - container: 8080
+          default: 8080
+          description:
+            en_us: Web UI HTTP port
+          protocol: tcp
 x-casaos:
-  author: froodle
-  main: Stirling-PDF
+  author: MRDGH2821
   category: Documents
-  icon: https://avatars.githubusercontent.com/u/139791695?s=200&v=4
-  port_map: 8080
   description:
-    en_us: Stirling PDF is a robust, locally hosted, web-based PDF manipulation platform powered by Docker. Our application offers an extensive range of functionalities, from simple operations like merging and splitting PDFs, to advanced features such as compressing, OCR and Conversions.
+    en_us: Stirling PDF is a robust, locally hosted, web-based PDF manipulation
+      platform powered by Docker. Our application offers an extensive range of
+      functionalities, from simple operations like merging and splitting PDFs,
+      to advanced features such as compressing, OCR and Conversions.
+  developer: froodle
+  icon: https://avatars.githubusercontent.com/u/139791695?s=200&v=4
+  main: Stirling-PDF
+  port_map: 8080
   tagline:
     en_us: Your locally hosted one-stop-shop for all your PDF needs.
+  tips:
+    en_us: |
+      - For advanced configuration visit: https://stirlingtools.com/docs/Advanced%20Configuration/How%20to%20add%20configurations/
+      - For OCR functionality: https://stirlingtools.com/docs/Advanced%20Configuration/OCR
   title:
     en_us: Stirling PDF
