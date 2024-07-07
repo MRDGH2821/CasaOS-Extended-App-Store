@@ -31,10 +31,7 @@ x-casaos:
   author: MRDGH2821
   category: Documents
   description:
-    en_us: Stirling PDF is a robust, locally hosted, web-based PDF manipulation
-      platform powered by Docker. Our application offers an extensive range of
-      functionalities, from simple operations like merging and splitting PDFs,
-      to advanced features such as compressing, OCR and Conversions.
+    en_us: Stirling PDF is a robust, locally hosted, web-based PDF manipulation platform powered by Docker. Our application offers an extensive range of functionalities, from simple operations like merging and splitting PDFs, to advanced features such as compressing, OCR and Conversions.
   developer: froodle
   icon: https://avatars.githubusercontent.com/u/139791695?s=200&v=4
   main: Stirling-PDF
