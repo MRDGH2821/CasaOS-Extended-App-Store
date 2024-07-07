@@ -106,7 +106,7 @@ services:
     privileged: false
     restart: unless-stopped
     volumes:
-      - source: /DATA/AppData/valkey/data
+      - source: /DATA/AppData/nextcloud-valkey/data
         target: /data
         type: bind
       - source: /DATA/AppData/nextcloud-valkey/config
