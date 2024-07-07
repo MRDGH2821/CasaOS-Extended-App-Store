@@ -50,13 +50,7 @@ services:
         target: /var/www/html
         type: bind
   nextcloud-postgresql:
-    container_name:
-      nextcloud-postgresql
-      # - /dev/vcsm:/dev/vcsm
-      # - /dev/vchiq:/dev/vchiq
-      # - /dev/video10:/dev/video10
-      # - /dev/video11:/dev/video11
-      # - /dev/video12:/dev/video12
+    container_name: nextcloud-postgresql
     environment:
       - POSTGRES_DB=nextcloud
       - POSTGRES_PASSWORD=nextcloud
